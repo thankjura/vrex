@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=VRex
+GenericName=App manager for VR devices
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=true
+Icon=vrex
+TryExec=vrex
+Exec=vrex %F

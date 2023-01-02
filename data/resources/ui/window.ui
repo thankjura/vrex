@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="VRexWindow" parent="GtkApplicationWindow">
+    <property name="default_width">800</property>
+    <property name="default_height">400</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="header">
+        <property name="vexpand">1</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkBox" id="body">
+            <property name="orientation">vertical</property>
+            <property name="vexpand">1</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox" id="footer">
+            <property name="height_request">32</property>
+            <property name="spacing">5</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

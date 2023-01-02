@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/ru/slie/vrex">
+    <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
+    <file>icons/quest2.png</file>
+    <file>icons/pico4.png</file>
+  </gresource>
+</gresources>
