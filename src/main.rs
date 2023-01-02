@@ -6,8 +6,10 @@ use gettextrs::{
 use gtk::gio;
 use gtk::prelude::ApplicationExtManual;
 
+mod client;
 mod config;
 mod core;
+mod structs;
 mod ui;
 
 #[cfg(not(debug_assertions))]

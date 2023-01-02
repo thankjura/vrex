@@ -1,4 +1,5 @@
 mod imp;
+mod bus;
 
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};

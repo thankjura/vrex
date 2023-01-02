@@ -1,3 +1,4 @@
+use crate::client::AdbClient;
 use crate::ui::window::VRexWindow;
 use adw::subclass::prelude::AdwApplicationImpl;
 use gettextrs::gettext;
@@ -6,15 +7,21 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use std::cell::RefCell;
 use std::rc::Rc;
+use crate::ui::app::bus;
 
 pub struct VRexAppImp {
     pub window: RefCell<Option<Rc<VRexWindow>>>,
+    pub client: AdbClient,
 }
 
 impl Default for VRexAppImp {
     fn default() -> Self {
+        let client = AdbClient::default();
+        client.imp().watch();
+
         Self {
             window: RefCell::new(None),
+            client,
         }
     }
 }
@@ -41,7 +48,10 @@ impl ApplicationImpl for VRexAppImp {
             }
         ));
 
+        bus::connect(&window, &self.client);
+
         let window = Rc::new(window);
+
 
         self.window.replace(Some(window.clone()));
         window.present();

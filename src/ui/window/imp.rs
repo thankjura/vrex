@@ -1,6 +1,6 @@
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::{glib, CompositeTemplate};
+use gtk::{glib, CompositeTemplate, ContentFit};
 
 #[derive(Default, CompositeTemplate)]
 #[template(resource = "/ru/slie/vrex/ui/window.ui")]
@@ -10,8 +10,11 @@ pub struct VRexWindowImp {
     // #[template_child(id = "footer")]
     // pub footer: TemplateChild<gtk::Box>,
     //
-    // #[template_child(id = "cover")]
-    // pub cover: TemplateChild<gtk::Picture>,
+    #[template_child(id = "cover")]
+    pub cover: TemplateChild<gtk::Picture>,
+
+    #[template_child(id = "device_summary")]
+    pub device_summary: TemplateChild<gtk::Label>,
 }
 
 #[glib::object_subclass]
@@ -31,10 +34,10 @@ impl ObjectSubclass for VRexWindowImp {
 }
 
 impl ObjectImpl for VRexWindowImp {
-    // fn constructed(&self) {
-    //     self.parent_constructed();
-    //     self.set_cover(None);
-    // }
+    fn constructed(&self) {
+        self.parent_constructed();
+        self.cover.set_content_fit(ContentFit::Cover);
+    }
 }
 
 impl WidgetImpl for VRexWindowImp {}

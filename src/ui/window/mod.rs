@@ -1,4 +1,5 @@
 mod imp;
+mod device_selector;
 
 use gtk::{gio, glib};
 
