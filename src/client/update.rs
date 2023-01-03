@@ -4,9 +4,10 @@ use gettextrs::gettext;
 use std::process;
 use std::str::from_utf8;
 use std::sync::{Arc, Mutex};
+use crate::client::ADB_PROGRAM;
 
 fn get_connected_devices() -> Option<Vec<Device>> {
-    if let Ok(value) = process::Command::new("adb")
+    if let Ok(value) = process::Command::new(ADB_PROGRAM)
         .args(["devices", "-l"])
         .output()
     {
@@ -24,7 +25,7 @@ fn get_connected_devices() -> Option<Vec<Device>> {
                     };
 
                     if let Some(dev_type) = dev_type {
-                        let parts: Vec<&str> = line.split_whitespace().into_iter().collect();
+                        let parts: Vec<&str> = line.split_whitespace().collect();
                         if parts.len() != 7 {
                             continue;
                         }

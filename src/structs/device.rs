@@ -1,4 +1,4 @@
-pub const PICO4: &str = "PICO4";
+pub const PICO4: &str = "PICOA811";
 pub const QUEST2: &str = "Quest_2";
 
 #[derive(Debug, Clone)]

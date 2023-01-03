@@ -1,3 +1,5 @@
+use gtk::prelude::ObjectExt;
+use gtk::subclass::prelude::ObjectSubclassExt;
 use crate::structs::Device;
 use crate::structs::device::DevType;
 use crate::ui::window::imp::VRexWindowImp;
@@ -15,9 +17,12 @@ impl VRexWindowImp {
                     self.device_summary.set_label(&format!("Quest 2: {}", device.id()));
                 }
             }
+            self.stack.set_visible_child_name("main");
+            self.obj().emit_by_name::<()>("device-changed", &[&device.id()]);
         } else {
             self.cover.set_resource(None);
             self.device_summary.set_label("");
+            self.stack.set_visible_child_name("placeholder");
         }
     }
 }
