@@ -17,9 +17,16 @@ pub fn connect(window: &VRexWindow, client: &AdbClient) {
     });
 
     window.connect("device-changed", true, move |values| {
+        let window = values[0].get::<VRexWindow>().unwrap();
         let dev_id = values[1].get::<String>().unwrap();
+        let app_list = &window.app_list();
+        app_list.clear();
         if let Some(apps) = get_installed_apps(&dev_id) {
-            println!("{:#?}", apps);
+            for app in apps {
+                if !app.is_system() {
+                    app_list.add(&app);
+                }
+            }
         }
         None
     });

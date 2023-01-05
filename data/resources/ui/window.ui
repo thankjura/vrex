@@ -35,7 +35,7 @@
               <object class="GtkBox">
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkBox" id="body">
+                  <object class="AppList" id="app_list_box">
                     <property name="orientation">vertical</property>
                     <property name="vexpand">1</property>
                   </object>

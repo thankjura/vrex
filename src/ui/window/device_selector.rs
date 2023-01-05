@@ -9,12 +9,23 @@ impl VRexWindowImp {
         if let Some(device) = device {
             match device.dev_type() {
                 DevType::Pico4 => {
-                    self.cover.set_resource(Some("/ru/slie/vrex/icons/pico4.png"));
-                    self.device_summary.set_label(&format!("Pico 4: {}", device.id()));
+                    if device.is_online() {
+                        self.cover.set_resource(Some("/ru/slie/vrex/icons/pico4.png"));
+                        self.device_summary.set_label(&format!("Pico 4: {}", device.id()));
+                    } else {
+                        self.cover.set_resource(Some("/ru/slie/vrex/icons/pico4_offline.png"));
+                        self.device_summary.set_label(&format!("Pico 4: {} (offline)", device.id()));
+                    }
+
                 },
                 DevType::Quest2 => {
-                    self.cover.set_resource(Some("/ru/slie/vrex/icons/quest2.png"));
-                    self.device_summary.set_label(&format!("Quest 2: {}", device.id()));
+                    if device.is_online() {
+                        self.cover.set_resource(Some("/ru/slie/vrex/icons/quest2.png"));
+                        self.device_summary.set_label(&format!("Quest 2: {}", device.id()));
+                    } else {
+                        self.cover.set_resource(Some("/ru/slie/vrex/icons/quest2_offline.png"));
+                        self.device_summary.set_label(&format!("Quest 2: {} (offline)", device.id()));
+                    }
                 }
             }
             self.stack.set_visible_child_name("main");

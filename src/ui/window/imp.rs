@@ -4,20 +4,22 @@ use gtk::{glib, CompositeTemplate, ContentFit};
 use gtk::glib::once_cell::sync::Lazy;
 use gtk::glib::subclass::Signal;
 use gtk::glib::Type;
+use crate::ui::window::app_list::AppList;
 
 #[derive(Default, CompositeTemplate)]
 #[template(resource = "/ru/slie/vrex/ui/window.ui")]
 pub struct VRexWindowImp {
     #[template_child(id = "stack")]
     pub stack: TemplateChild<gtk::Stack>,
-    // #[template_child(id = "footer")]
-    // pub footer: TemplateChild<gtk::Box>,
-    //
+
     #[template_child(id = "cover")]
     pub cover: TemplateChild<gtk::Picture>,
 
     #[template_child(id = "device_summary")]
     pub device_summary: TemplateChild<gtk::Label>,
+
+    #[template_child(id = "app_list_box")]
+    pub app_list_box: TemplateChild<AppList>,
 }
 
 #[glib::object_subclass]

@@ -20,11 +20,11 @@ pub fn get_installed_apps(dev_id: &str) ->  Option<Vec<App>> {
                             out.push(app);
                         }
                         builder = App::builder();
+
                         let parts: Vec<&str> = line.split_whitespace().collect();
                         if parts.len() != 3 {
                             continue
                         }
-
                         builder.id(parts.get(1).unwrap().trim().replace("[", "").replace("]", ""));
                         continue;
                     }

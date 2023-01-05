@@ -33,6 +33,18 @@ impl App {
     pub fn is_newer_than(&self, other: &App) -> bool {
         self.version > other.version
     }
+
+    pub fn name(&self) -> &str {
+        &self.id
+    }
+
+    pub fn version(&self) -> &str {
+        &self.version
+    }
+
+    pub fn is_system(&self) -> bool {
+        self.system
+    }
 }
 
 impl AppBuilder {
